@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 const Mybookself = () => {
   const [bookData, setBookData] = useState([]);
   const [loading, setLoading] = useState(true);
+console.log(bookData);
 
   const fetchBookSelfFromLocalStorage = () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cart = JSON.parse(localStorage.getItem("Bookself")) || [];
     setBookData(cart);
     setLoading(false);
   };
@@ -39,7 +40,7 @@ const Mybookself = () => {
             <span className="loading loading-bars loading-md"></span>
             <span className="loading loading-bars loading-lg"></span>
           </div>
-        ) : bookData.length > 0 ? (
+        ) : bookData?.length > 0 ? (
           bookData.map((book, index) => (
             <div key={index} className="card shadow-lg p-4 rounded-md border ">
               <h2 className="text-lg font-semibold">{book.title}</h2>

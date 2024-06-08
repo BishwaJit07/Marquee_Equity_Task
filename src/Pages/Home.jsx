@@ -8,6 +8,7 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   console.log(bookData);
+
   useEffect(() => {
     if (query !== "") {
       setLoading(true);
@@ -36,14 +37,14 @@ const Home = () => {
 
   const handleBookShelf = (book) => {
     const bookDetails = {
-      title: book.title,
+      title: book?.title,
       author_name: book?.author_name,
       first_publish_year: book?.first_publish_year,
     };
 
     console.log("Book to add:", bookDetails);
 
-    let Bookself = JSON.parse(localStorage.getItem("cart")) || [];
+    let Bookself = JSON.parse(localStorage.getItem("Bookself")) || [];
     console.log("Current Bookself:", Bookself);
 
     Bookself.push(bookDetails);
@@ -102,9 +103,9 @@ const Home = () => {
 
       {/* card */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-4 justify">
         {loading ? (
-          <div className="flex ">
+          <div className=" ">
             <p>Loading books...</p>
             <span className="loading loading-bars loading-xs"></span>
             <span className="loading loading-bars loading-sm"></span>
